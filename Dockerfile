@@ -1,4 +1,4 @@
-FROM php:7.4-fpm-alpine
+FROM php:8-fpm-alpine
 
 COPY php.ini $PHP_INI_DIR/php.ini
 
@@ -30,7 +30,8 @@ RUN docker-php-ext-install \
         pdo_mysql \
         intl
 
-RUN pecl install -o -f redis && \
+RUN pecl update && \
+    pecl install -o -f redis && \
     rm -rf /tmp/pear && \
     docker-php-ext-enable redis && \
     cp /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime && \
