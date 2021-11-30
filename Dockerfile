@@ -13,6 +13,13 @@ RUN apk --update add --no-cache \
     tzdata \
     wget \
     icu-dev \
+    argon2-dev \
+    coreutils \
+    curl-dev \
+    libedit-dev \
+    libsodium-dev \
+    linux-headers \
+    sqlite-dev \
     && rm -rf /var/cache/apk/*
 
 RUN docker-php-ext-configure intl
@@ -22,8 +29,6 @@ RUN docker-php-ext-install \
         gd \
         soap \
         xml \
-        posix \
-        tokenizer \
         ctype \
         pcntl \
         opcache \
